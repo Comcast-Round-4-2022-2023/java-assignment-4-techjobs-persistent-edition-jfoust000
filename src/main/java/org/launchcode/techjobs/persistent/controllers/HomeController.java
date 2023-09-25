@@ -59,8 +59,7 @@ public class HomeController {
         if (optEmployer.isPresent()) {
 
             Employer employer = (Employer) optEmployer.get();
-
-            String newSkills = "";
+            newJob.setEmployer(employer);
 
             for (int id : skills) {
 
@@ -69,7 +68,7 @@ public class HomeController {
                 if (optSkill.isPresent()) {
 
                    Skill newSkill = (Skill) optSkill.get();
-                   newSkills += newSkill.getName() + " ";
+                   newJob.getSkills().add(newSkill);
 
                 } else {
 
@@ -78,8 +77,6 @@ public class HomeController {
 
             }
 
-            newJob.setEmployer(employer);
-            newJob.setSkills(newSkills);
             jobRepository.save(newJob);
             return "redirect:";
 
