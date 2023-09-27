@@ -43,6 +43,7 @@ public class ListController {
         model.addAttribute("employers", employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
         return "list";
+
     }
 
     @RequestMapping(value = "jobs")
